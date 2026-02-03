@@ -16,7 +16,7 @@
     "vercel:yolo": "vercel --build-env YARN_ENABLE_IMMUTABLE_INSTALLS=false --build-env ENABLE_EXPERIMENTAL_COREPACK=1 --build-env NEXT_PUBLIC_IGNORE_BUILD_ERROR=true --build-env VERCEL_TELEMETRY_DISABLED=1"
   },
   "dependencies": {
-    "@farcaster/miniapp-sdk": "^0.1.10",
+    "@farcaster/miniapp-sdk": "^0.2.0",
     "@farcaster/miniapp-wagmi-connector": "^1.0.0",
     "@heroicons/react": "~2.1.5",
     "@rainbow-me/rainbowkit": "2.2.9",
@@ -25,6 +25,7 @@
     "@scaffold-ui/debug-contracts": "^0.1.7",
     "@scaffold-ui/hooks": "^0.1.6",
     "@tanstack/react-query": "~5.59.15",
+    "@wagmi/core": "^2.14.1",
     "blo": "~1.2.0",
     "burner-connector": "0.0.20",
     "daisyui": "5.0.9",
