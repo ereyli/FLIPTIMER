@@ -32,10 +32,18 @@ export const getMiniappEmbed = () => {
 
 export const getMiniappMetadata = (base: Metadata): Metadata => {
   const embed = getMiniappEmbed();
+  const baseOther = base.other ?? {};
+  const filteredOther: Record<string, string> = {};
+  // Filter out undefined values from base.other
+  for (const [key, value] of Object.entries(baseOther)) {
+    if (typeof value === "string") {
+      filteredOther[key] = value;
+    }
+  }
   return {
     ...base,
     other: {
-      ...(base.other ?? {}),
+      ...filteredOther,
       "fc:miniapp": JSON.stringify(embed),
       "fc:frame": JSON.stringify(embed),
     },

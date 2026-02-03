@@ -262,7 +262,7 @@ export default function Home() {
   const allRoundsContracts = useMemo(() => {
     if (!address || !currentRound || currentRound < 1) return [];
     return Array.from({ length: currentRound }, (_, i) => ({
-      address: FOMO3D_ADDRESS as `0x${string}`,
+      address: FLIPTIMER_ADDRESS as `0x${string}`,
       abi: fomoAbi,
       functionName: "getPlayer" as const,
       args: [BigInt(i + 1), address],
@@ -316,7 +316,7 @@ export default function Home() {
   useEffect(() => {
     const fetchPrice = async () => {
       try {
-      const res = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${FLIP_TOKEN}`);
+        const res = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${FLIP_TOKEN}`);
         const data = await res.json();
         if (data.pairs && data.pairs.length > 0) setClawdPrice(parseFloat(data.pairs[0].priceUsd || "0"));
       } catch {
