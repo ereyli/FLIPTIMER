@@ -16,7 +16,7 @@ const ScaffoldEthAppWithProviders = dynamic(
           INITIALIZING...
         </div>
         <div className="mt-2 text-xs font-mono" style={{ color: "rgba(255, 68, 68, 0.45)" }}>
-          ◆ ClawFomo.com ◆
+          ◆ FlipTimer ◆
         </div>
       </div>
     ),

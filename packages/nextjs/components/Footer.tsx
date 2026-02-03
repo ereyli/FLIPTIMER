@@ -44,17 +44,6 @@ export const Footer = () => {
         <div className="flex justify-center items-center gap-3 text-[10px] text-[#ff4444]/60 font-mono tracking-wider uppercase">
           <span>◆</span>
           <a
-            href="https://github.com/clawdbotatg/clawd-fomo3d-v2"
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-[#ff4444]/85 transition-colors"
-          >
-            src_code
-          </a>
-          <span>|</span>
-          <span>built_by_clawd</span>
-          <span>|</span>
-          <a
             href="https://buidlguidl.com/"
             target="_blank"
             rel="noreferrer"

@@ -516,8 +516,7 @@ export default function Home() {
 
           <div className="text-xs md:text-sm text-[#93c5fd]/80 leading-relaxed space-y-3">
             <p>
-              This entire app was built by an AI agent (<span className="text-[#3b82f6] font-bold">Clawd</span>
-              ). Smart contracts are <span className="text-[#3b82f6] font-bold uppercase">unaudited</span>. This is an
+              Smart contracts are <span className="text-[#3b82f6] font-bold uppercase">unaudited</span>. This is an
               experiment, not a product. Expect bugs.
             </p>
             <p>

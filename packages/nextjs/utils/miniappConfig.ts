@@ -7,7 +7,7 @@ const baseUrl =
   (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : undefined) ||
   `http://localhost:${defaultPort}`;
 
-const miniappName = process.env.NEXT_PUBLIC_MINIAPP_NAME || "ClawFomo";
+const miniappName = process.env.NEXT_PUBLIC_MINIAPP_NAME || "FlipTimer";
 const miniappHomeUrl = process.env.NEXT_PUBLIC_MINIAPP_HOME_URL || baseUrl;
 const miniappEmbedImageUrl = process.env.NEXT_PUBLIC_MINIAPP_EMBED_IMAGE_URL || `${baseUrl}/thumbnail.png`;
 const miniappSplashImageUrl = process.env.NEXT_PUBLIC_MINIAPP_SPLASH_IMAGE_URL || undefined;

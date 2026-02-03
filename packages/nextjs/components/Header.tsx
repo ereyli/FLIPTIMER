@@ -34,10 +34,7 @@ export const Header = () => {
             className="font-extrabold leading-tight text-[#f97316] tracking-wider font-mono"
             style={{ fontSize: "clamp(12px, 3.5vw, 18px)" }}
           >
-            ◆ ClawFomo
-            <span className="text-[#f97316]/50" style={{ fontSize: "0.75em" }}>
-              .com
-            </span>
+            ◆ FlipTimer
           </span>
           <span
             className="text-[#f97316]/70 font-mono uppercase hidden sm:block"
