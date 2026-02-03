@@ -2,7 +2,7 @@
 pragma solidity ^0.8.20;
 
 import "./DeployHelpers.s.sol";
-import "../contracts/ClawdFomo3D.sol";
+import "../contracts/FlipTimer.sol";
 
 contract DeployScript is ScaffoldETHDeploy {
     function run() external ScaffoldEthDeployerRunner {
@@ -11,18 +11,18 @@ contract DeployScript is ScaffoldETHDeploy {
         // Timer: 5 minutes (300 seconds)
         uint256 timerDuration = 5 minutes;
 
-        ClawdFomo3D game = new ClawdFomo3D(
+        FlipTimer game = new FlipTimer(
             clawdToken,
             timerDuration
         );
 
         console.logString(
             string.concat(
-                "ClawdFomo3D deployed at: ",
+                "FlipTimer deployed at: ",
                 vm.toString(address(game))
             )
         );
 
-        deployments.push(Deployment("ClawdFomo3D", address(game)));
+        deployments.push(Deployment("FlipTimer", address(game)));
     }
 }

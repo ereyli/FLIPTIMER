@@ -2,8 +2,8 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 
 const externalContracts = {
   8453: {
-    CLAWD: {
-      address: "0x9f86dB9fc6f7c9408e8Fda3Ff8ce4e78ac7a6b07",
+    FLIP: {
+      address: "0xB79346381a98Bdb140f869C4b4a6dc678CB48B07",
       abi: [
         {
           type: "function",

@@ -6,8 +6,8 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 
 const deployedContracts = {
   8453: {
-    ClawdFomo3D: {
-      address: "0x859e5cb97e1cf357643a6633d5bec6d45e44cfd4",
+    FlipTimer: {
+      address: "0x116395d3a4b640727eEC6EB19703855Bf7756fdb",
       abi: [
         {
           type: "constructor",

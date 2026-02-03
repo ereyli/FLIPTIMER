@@ -1,20 +1,23 @@
 import "@rainbow-me/rainbowkit/styles.css";
 import "@scaffold-ui/components/styles.css";
-import type { Viewport } from "next";
+import type { Metadata, Viewport } from "next";
 import { ClientProviders } from "~~/components/ClientProviders";
 import { ThemeProvider } from "~~/components/ThemeProvider";
 import "~~/styles/globals.css";
 import { getMetadata } from "~~/utils/scaffold-eth/getMetadata";
+import { getMiniappMetadata } from "~~/utils/miniappConfig";
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1.0,
 };
 
-export const metadata = getMetadata({
-  title: "ClawFomo.com — Last Buyer Wins",
-  description: "FOMO3D king-of-the-hill game with $CLAWD on Base. Buy keys, reset the timer, win the pot!",
+const baseMetadata = getMetadata({
+  title: "FlipTimer — Last Buyer Wins",
+  description: "FlipTimer king-of-the-hill game with $FLIP on Base. Buy keys, reset the timer, win the pot!",
 });
+
+export const metadata: Metadata = getMiniappMetadata(baseMetadata);
 
 const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
   return (

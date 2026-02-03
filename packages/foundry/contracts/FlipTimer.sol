@@ -25,7 +25,7 @@ import {Pausable} from "@openzeppelin/contracts/utils/Pausable.sol";
  *   On each buy: 10% burned, 25% of after-burn to existing key holders, 75% of after-burn to pot.
  *   On round end: pot split 50% winner / 20% burn / 25% dividends (bonus) / 5% next round seed.
  */
-contract ClawdFomo3D is ReentrancyGuard, Ownable, Pausable {
+contract FlipTimer is ReentrancyGuard, Ownable, Pausable {
     using SafeERC20 for IERC20;
 
     // ============ Constants ============

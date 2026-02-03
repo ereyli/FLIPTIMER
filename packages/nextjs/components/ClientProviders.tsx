@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { MiniAppReady } from "~~/components/MiniAppReady";
 
 const ScaffoldEthAppWithProviders = dynamic(
   () => import("~~/components/ScaffoldEthAppWithProviders").then(mod => ({ default: mod.ScaffoldEthAppWithProviders })),
@@ -11,7 +12,7 @@ const ScaffoldEthAppWithProviders = dynamic(
         <div className="text-4xl animate-pulse" style={{ filter: "hue-rotate(-10deg) saturate(2)" }}>
           🦞
         </div>
-        <div className="text-sm mt-4 font-mono tracking-[0.3em] uppercase animate-pulse" style={{ color: "#ff4444" }}>
+        <div className="text-sm mt-4 font-mono tracking-[0.3em] uppercase animate-pulse" style={{ color: "#38bdf8" }}>
           INITIALIZING...
         </div>
         <div className="mt-2 text-xs font-mono" style={{ color: "rgba(255, 68, 68, 0.45)" }}>
@@ -23,5 +24,10 @@ const ScaffoldEthAppWithProviders = dynamic(
 );
 
 export const ClientProviders = ({ children }: { children: React.ReactNode }) => {
-  return <ScaffoldEthAppWithProviders>{children}</ScaffoldEthAppWithProviders>;
+  return (
+    <>
+      <MiniAppReady />
+      <ScaffoldEthAppWithProviders>{children}</ScaffoldEthAppWithProviders>
+    </>
+  );
 };

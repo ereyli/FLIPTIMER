@@ -13,7 +13,7 @@ import { wagmiConfig } from "~~/services/web3/wagmiConfig";
 const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      <div className="flex flex-col min-h-screen scanlines" style={{ background: "#0f0d1a" }}>
+      <div className="flex flex-col min-h-screen scanlines" style={{ background: "#0b0f1a" }}>
         {/* Terminal grid background */}
         <div className="terminal-grid" />
         <Header />
@@ -23,8 +23,8 @@ const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
       <Toaster
         toastOptions={{
           style: {
-            background: "#13111f",
-            color: "#f97316",
+            background: "#0f172a",
+            color: "#3b82f6",
             border: "1px solid rgba(249, 115, 22, 0.35)",
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: "0.85rem",
@@ -45,22 +45,22 @@ export const queryClient = new QueryClient({
 
 export const ScaffoldEthAppWithProviders = ({ children }: { children: React.ReactNode }) => {
   const orangeDarkTheme = darkTheme({
-    accentColor: "#f97316",
-    accentColorForeground: "#0f0d1a",
+    accentColor: "#3b82f6",
+    accentColorForeground: "#0b0f1a",
     borderRadius: "small",
     fontStack: "system",
   });
 
   // Override RainbowKit modal backgrounds to match site theme
-  orangeDarkTheme.colors.modalBackground = "#13111f";
-  orangeDarkTheme.colors.profileForeground = "#13111f";
-  orangeDarkTheme.colors.connectButtonBackground = "#1a1727";
+  orangeDarkTheme.colors.modalBackground = "#0f172a";
+  orangeDarkTheme.colors.profileForeground = "#0f172a";
+  orangeDarkTheme.colors.connectButtonBackground = "#0b1220";
 
   return (
     <WagmiProvider config={wagmiConfig}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider avatar={BlockieAvatar} theme={orangeDarkTheme}>
-          <ProgressBar height="2px" color="#f97316" />
+          <ProgressBar height="2px" color="#3b82f6" />
           <ScaffoldEthApp>{children}</ScaffoldEthApp>
         </RainbowKitProvider>
       </QueryClientProvider>

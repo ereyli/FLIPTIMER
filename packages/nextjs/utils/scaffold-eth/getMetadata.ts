@@ -5,7 +5,7 @@ const baseUrl = process.env.NEXT_PUBLIC_PRODUCTION_URL
   : process.env.VERCEL_PROJECT_PRODUCTION_URL
     ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
     : `http://localhost:${process.env.PORT || 3000}`;
-const titleTemplate = "%s | ClawFomo.com";
+const titleTemplate = "%s | FlipTimer";
 
 export const getMetadata = ({
   title,
@@ -16,7 +16,7 @@ export const getMetadata = ({
   description: string;
   imageRelativePath?: string;
 }): Metadata => {
-  const imageUrl = `https://clawfomo.com${imageRelativePath}`;
+  const imageUrl = `${baseUrl}${imageRelativePath}`;
 
   return {
     metadataBase: new URL(baseUrl),
@@ -26,21 +26,18 @@ export const getMetadata = ({
     },
     description: description,
     openGraph: {
-      title: "ClawFomo.com — Last Buyer Wins",
-      description:
-        "An AI-built Fomo3D game on Base. Buy keys with $CLAWD. Last buyer when the timer hits zero wins the pot. 🦞",
+      title: "FlipTimer — Last Buyer Wins",
+      description: "A FlipTimer game on Base. Buy keys with $FLIP. Last buyer when the timer hits zero wins the pot.",
       images: [{ url: imageUrl, width: 1200, height: 630 }],
-      url: "https://clawfomo.com",
+      url: baseUrl,
       type: "website",
-      siteName: "ClawFomo.com",
+      siteName: "FlipTimer",
     },
     twitter: {
       card: "summary_large_image",
-      title: "ClawFomo.com — Last Buyer Wins",
-      description:
-        "An AI-built Fomo3D game on Base. Buy keys with $CLAWD. Last buyer when the timer hits zero wins the pot. 🦞",
+      title: "FlipTimer — Last Buyer Wins",
+      description: "A FlipTimer game on Base. Buy keys with $FLIP. Last buyer when the timer hits zero wins the pot.",
       images: [imageUrl],
-      site: "@clawdbotatg",
     },
     icons: {
       icon: [
