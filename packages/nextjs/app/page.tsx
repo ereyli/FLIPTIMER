@@ -4,7 +4,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Address } from "@scaffold-ui/components";
 import { Abi, formatEther } from "viem";
 import { useAccount, useChainId, useReadContracts, useSwitchChain } from "wagmi";
-import { useLobsterConfetti } from "~~/components/LobsterConfetti";
 import deployedContracts from "~~/contracts/deployedContracts";
 import externalContracts from "~~/contracts/externalContracts";
 import { useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
@@ -162,7 +161,6 @@ export default function Home() {
   const { address } = useAccount();
   const chainId = useChainId();
   const { switchChain } = useSwitchChain();
-  const { trigger: triggerConfetti } = useLobsterConfetti();
   const pageRef = useRef<HTMLDivElement>(null);
   const buyBtnRef = useRef<HTMLButtonElement>(null);
 
@@ -386,15 +384,6 @@ export default function Home() {
     return `$${usd.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
   };
 
-  // ============ Confetti ============
-  const fireConfetti = (e?: React.MouseEvent) => {
-    if (e) triggerConfetti(e.clientX, e.clientY);
-    else if (buyBtnRef.current) {
-      const r = buyBtnRef.current.getBoundingClientRect();
-      triggerConfetti(r.left + r.width / 2, r.top);
-    } else triggerConfetti();
-  };
-
   // ============ Handlers ============
   const handleSwitch = async () => {
     setIsSwitching(true);
@@ -407,12 +396,11 @@ export default function Home() {
     }
   };
 
-  const handleApprove = async (e: React.MouseEvent) => {
+  const handleApprove = async () => {
     setIsApproving(true);
     try {
       await writeClawd({ functionName: "approve", args: [FLIPTIMER_ADDRESS, cost! * 5n] });
       notification.success("FLIP APPROVED ✅");
-      fireConfetti(e);
     } catch (err: unknown) {
       notification.error(decodeError(err));
     } finally {
@@ -420,7 +408,7 @@ export default function Home() {
     }
   };
 
-  const handleBuy = async (e: React.MouseEvent) => {
+  const handleBuy = async () => {
     if (keysNum <= 0 || keysNum > 1000) {
       notification.error("ENTER 1-1000 KEYS");
       return;
@@ -429,7 +417,6 @@ export default function Home() {
     try {
       await writeFomo({ functionName: "buyKeys", args: [BigInt(keysNum)] });
       notification.success(`ACQUIRED ${keysNum} KEY${keysNum > 1 ? "S" : ""} 🦞`);
-      fireConfetti(e);
       // Screen shake
       setIsShaking(true);
       setTimeout(() => setIsShaking(false), 300);
@@ -445,7 +432,6 @@ export default function Home() {
     try {
       await writeFomo({ functionName: "endRound" });
       notification.success("ROUND TERMINATED");
-      triggerConfetti();
     } catch (err: unknown) {
       notification.error(decodeError(err));
     } finally {
@@ -458,7 +444,6 @@ export default function Home() {
     try {
       await writeFomo({ functionName: "claimDividends", args: [BigInt(round)] });
       notification.success(`DIVIDENDS CLAIMED — ROUND ${round}`);
-      triggerConfetti();
     } catch (err: unknown) {
       notification.error(decodeError(err));
     } finally {
@@ -472,7 +457,6 @@ export default function Home() {
     try {
       await writeFomo({ functionName: "claimAllDividends" });
       notification.success(`CLAIMED ALL DIVIDENDS 🦞`);
-      triggerConfetti();
     } catch (err: unknown) {
       const msg = decodeError(err);
       notification.error(msg);
@@ -492,7 +476,6 @@ export default function Home() {
     <div
       ref={pageRef}
       className={`relative z-[1] flex flex-col items-center gap-0 px-2 py-4 md:px-6 max-w-4xl mx-auto pb-16 font-mono overflow-x-hidden ${isShaking ? "shake" : ""}`}
-      onClick={e => triggerConfetti(e.clientX, e.clientY)}
     >
       {/* ═══════════════════════════════════════
           DISCLAIMER — EXPERIMENTAL SOFTWARE
