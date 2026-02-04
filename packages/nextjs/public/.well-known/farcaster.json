@@ -23,6 +23,7 @@
     "requiredChains": ["eip155:8453"],
     "ogTitle": "FlipTimer",
     "ogDescription": "FlipTimer - Last buyer wins the pot on Base",
-    "ogImageUrl": "https://fliptimer-nextjs-4oqr.vercel.app/og-image.png"
+    "ogImageUrl": "https://fliptimer-nextjs-4oqr.vercel.app/og-image.png",
+    "noindex": true
   }
 }
