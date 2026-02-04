@@ -170,7 +170,6 @@ export default function Home() {
   const [isApproving, setIsApproving] = useState(false);
   const [isBuying, setIsBuying] = useState(false);
   const [isEnding, setIsEnding] = useState(false);
-  const [claimingRound, setClaimingRound] = useState<number | null>(null);
   const [clawdPrice, setClawdPrice] = useState(0);
   const [countdown, setCountdown] = useState("");
   const [timeLeft, setTimeLeft] = useState(0);
@@ -422,7 +421,7 @@ export default function Home() {
     setIsBuying(true);
     try {
       await writeFomo({ functionName: "buyKeys", args: [BigInt(keysNum)] });
-      notification.success(`ACQUIRED ${keysNum} KEY${keysNum > 1 ? "S" : ""} 🦞`);
+      notification.success(`ACQUIRED ${keysNum} KEY${keysNum > 1 ? "S" : ""}`);
       // Screen shake
       setIsShaking(true);
       setTimeout(() => setIsShaking(false), 300);
@@ -445,24 +444,12 @@ export default function Home() {
     }
   };
 
-  const handleClaim = async (round: number) => {
-    setClaimingRound(round);
-    try {
-      await writeFomo({ functionName: "claimDividends", args: [BigInt(round)] });
-      notification.success(`DIVIDENDS CLAIMED — ROUND ${round}`);
-    } catch (err: unknown) {
-      notification.error(decodeError(err));
-    } finally {
-      setClaimingRound(null);
-    }
-  };
-
   const handleClaimAll = async () => {
     if (totalUnclaimed === 0n) return;
     setIsClaimingAll(true);
     try {
       await writeFomo({ functionName: "claimAllDividends" });
-      notification.success(`CLAIMED ALL DIVIDENDS 🦞`);
+      notification.success(`CLAIMED ALL DIVIDENDS`);
     } catch (err: unknown) {
       const msg = decodeError(err);
       notification.error(msg);
@@ -854,18 +841,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-
-            {playerInfo && playerInfo[1] > 0n && (
-              <button
-                className="btn-action rounded-xl w-full mt-4 py-2.5 text-sm"
-                disabled={claimingRound === currentRound}
-                onClick={() => handleClaim(currentRound)}
-              >
-                {claimingRound === currentRound
-                  ? "CLAIMING..."
-                  : `CLAIM ${fmtC(playerInfo[1])} FLIP (ROUND ${currentRound})`}
-              </button>
-            )}
           </div>
 
           {/* ═══════════════════════════════════════
@@ -907,7 +882,7 @@ export default function Home() {
                   ? "CLAIMING..."
                   : wrongNetwork
                     ? "SWITCH TO BASE"
-                    : `🦞 CLAIM ALL — ${fmtC(totalUnclaimed)} FLIP`}
+                    : `CLAIM ALL — ${fmtC(totalUnclaimed)} FLIP`}
               </button>
 
               {roundsWithUnclaimed.length > 1 && (
@@ -929,18 +904,9 @@ export default function Home() {
                     </div>
                     <div className="flex items-center gap-2">
                       {r.pending > 0n ? (
-                        <>
-                          <span className="text-xs font-mono text-[#e0f2fe] font-bold text-glow">
-                            {fmtCDiv(r.pending)} FLIP
-                          </span>
-                          <button
-                            className="btn-action rounded-lg px-3 py-1 text-[10px]"
-                            disabled={claimingRound === r.round || isClaimingAll}
-                            onClick={() => handleClaim(r.round)}
-                          >
-                            {claimingRound === r.round ? "..." : "CLAIM"}
-                          </button>
-                        </>
+                        <span className="text-xs font-mono text-[#e0f2fe] font-bold text-glow">
+                          {fmtCDiv(r.pending)} FLIP
+                        </span>
                       ) : (
                         <span className="text-[10px] text-[#94a3b8]">✓ claimed {fmtCDiv(r.withdrawn)}</span>
                       )}
