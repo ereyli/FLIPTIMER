@@ -40,12 +40,17 @@ export const getMiniappMetadata = (base: Metadata): Metadata => {
       filteredOther[key] = value;
     }
   }
+
+  // Base app_id from environment variable (required for Base integration)
+  const baseAppId = process.env.NEXT_PUBLIC_BASE_APP_ID;
+
   return {
     ...base,
     other: {
       ...filteredOther,
       "fc:miniapp": JSON.stringify(embed),
       "fc:frame": JSON.stringify(embed),
+      "base:app_id": baseAppId || "69832ee3bd202a51855da5a6",
     },
   };
 };
