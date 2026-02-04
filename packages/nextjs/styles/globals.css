@@ -168,7 +168,6 @@
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  transition: all 0.2s ease;
   cursor: pointer;
   text-shadow: 0 0 8px rgba(249, 115, 22, 0.5);
   box-shadow:
@@ -189,7 +188,6 @@
 
 .btn-action:active:not(:disabled) {
   background: rgba(249, 115, 22, 0.35);
-  transform: scale(0.97);
 }
 
 .btn-action:disabled {
@@ -209,7 +207,6 @@
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  transition: all 0.2s ease;
   cursor: pointer;
   text-shadow: none;
   box-shadow:
@@ -232,7 +229,6 @@
 
 .btn-crown:active:not(:disabled) {
   background: linear-gradient(135deg, #1d4ed8 0%, #c2410c 100%);
-  transform: scale(0.97);
   box-shadow:
     0 0 20px rgba(249, 115, 22, 0.4),
     0 0 40px rgba(249, 115, 22, 0.2);
@@ -255,7 +251,6 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  transition: all 0.2s ease;
   cursor: pointer;
   text-decoration: none;
   display: inline-block;
@@ -266,10 +261,6 @@
   border-color: rgba(124, 58, 237, 0.55);
   color: #93c5fd;
   text-shadow: 0 0 8px rgba(124, 58, 237, 0.4);
-}
-
-.btn-secondary:active {
-  transform: scale(0.97);
 }
 
 /* ═══════════════════════════════════════════
@@ -283,7 +274,6 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  transition: all 0.2s ease;
   cursor: pointer;
 }
 

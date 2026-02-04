@@ -485,7 +485,7 @@ export default function Home() {
           onClick={e => e.stopPropagation()}
         >
           <div
-            className="text-center text-xs md:text-base font-black tracking-[0.1em] md:tracking-[0.3em] uppercase mb-4 animate-pulse"
+            className="text-center text-xs md:text-base font-black tracking-[0.1em] md:tracking-[0.3em] uppercase mb-4"
             style={{ color: "#3b82f6", textShadow: "0 0 15px rgba(249,115,22,0.9), 0 0 30px rgba(249,115,22,0.5)" }}
           >
             ⚠ WARNING — EXPERIMENTAL ⚠
@@ -512,8 +512,8 @@ export default function Home() {
             <button
               className="px-4 md:px-8 py-3 font-mono font-black text-xs md:text-sm tracking-[0.1em] md:tracking-[0.2em] uppercase rounded-xl
                          border-2 border-[#3b82f6] text-[#3b82f6] bg-[#3b82f6]/10
-                         hover:bg-[#3b82f6]/25 hover:scale-105 active:scale-95
-                         transition-all duration-150 cursor-pointer
+                         hover:bg-[#3b82f6]/25
+                         cursor-pointer
                          shadow-[0_0_15px_rgba(249,115,22,0.3)]
                          hover:shadow-[0_0_25px_rgba(249,115,22,0.5)]"
               style={{ textShadow: "0 0 8px rgba(249,115,22,0.7)" }}
@@ -542,7 +542,7 @@ export default function Home() {
               href={FLIP_BUY_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-crown rounded-xl w-full py-3 md:py-4 text-sm md:text-base hover:scale-[1.03] active:scale-95 inline-block text-center"
+              className="btn-crown rounded-xl w-full py-3 md:py-4 text-sm md:text-base inline-block text-center"
               onClick={e => e.stopPropagation()}
             >
               🔄 SWAP ETH → $FLIP ON UNISWAP V4
@@ -620,7 +620,7 @@ export default function Home() {
 
         <div
           className={`text-[2.75rem] md:text-[8rem] font-mono font-black tracking-tight leading-none my-3 md:my-6 ${
-            isAntiSnipe ? "text-glow-intense animate-flicker" : isRoundActive ? "text-glow" : ""
+            isAntiSnipe ? "text-glow-intense" : isRoundActive ? "text-glow" : ""
           }`}
           style={{ color: "#3b82f6" }}
         >
@@ -637,7 +637,7 @@ export default function Home() {
 
         {isAntiSnipe && (
           <div className="mt-3 inline-flex items-center gap-2 px-4 py-1.5 border border-[#3b82f6]/70 bg-[#3b82f6]/15 rounded-full">
-            <div className="w-2 h-2 bg-[#3b82f6] animate-pulse-ring rounded-full" />
+            <div className="w-2 h-2 bg-[#3b82f6] rounded-full" />
             <span className="text-[10px] text-[#3b82f6] tracking-[0.3em] uppercase font-bold">ANTI-SNIPE</span>
           </div>
         )}
@@ -645,13 +645,13 @@ export default function Home() {
         {/* END ROUND — right under timer when round is over */}
         {!isRoundActive && (
           <div className="mt-6">
-            <div className="text-xs md:text-sm text-[#3b82f6] font-bold mb-2 text-glow-subtle animate-pulse">
+            <div className="text-xs md:text-sm text-[#3b82f6] font-bold mb-2 text-glow-subtle">
               🏁 ROUND OVER — DISTRIBUTE
             </div>
             <div className="text-[10px] md:text-xs text-[#94a3b8] mb-3">anyone can trigger distribution now</div>
             {wrongNetwork ? (
               <button
-                className="btn-crown rounded-xl py-3 px-6 md:py-4 md:px-10 text-sm md:text-lg hover:scale-[1.03] active:scale-95"
+                className="btn-crown rounded-xl py-3 px-6 md:py-4 md:px-10 text-sm md:text-lg"
                 disabled={isSwitching}
                 onClick={handleSwitch}
               >
@@ -659,7 +659,7 @@ export default function Home() {
               </button>
             ) : (
               <button
-                className="btn-crown rounded-xl py-3 px-6 md:py-4 md:px-10 text-sm md:text-lg hover:scale-[1.03] active:scale-95 animate-pulse"
+                className="btn-crown rounded-xl py-3 px-6 md:py-4 md:px-10 text-sm md:text-lg"
                 disabled={isEnding}
                 onClick={handleEndRound}
               >
@@ -712,7 +712,7 @@ export default function Home() {
               value={numKeys}
               onChange={e => setNumKeys(e.target.value)}
               className="w-full bg-transparent border border-[#2563eb]/50 rounded-xl px-3 py-2 md:px-4 md:py-3 text-center text-2xl md:text-3xl font-bold text-[#e0f2fe] font-mono
-                         focus:outline-none focus:border-[#2563eb]/80 focus:shadow-[0_0_15px_rgba(124,58,237,0.3)] transition-all"
+                         focus:outline-none focus:border-[#2563eb]/80 focus:shadow-[0_0_15px_rgba(124,58,237,0.3)]"
               placeholder="1"
             />
 
@@ -721,7 +721,7 @@ export default function Home() {
               {[1, 5, 10, 25, 50, 100].map(n => (
                 <button
                   key={n}
-                  className={`flex-1 py-1 md:py-1.5 text-[10px] md:text-xs font-mono font-bold tracking-wider transition-all border rounded-lg cursor-pointer ${
+                  className={`flex-1 py-1 md:py-1.5 text-[10px] md:text-xs font-mono font-bold tracking-wider border rounded-lg cursor-pointer ${
                     numKeys === String(n)
                       ? "border-[#2563eb]/70 bg-[#2563eb]/25 text-[#93c5fd]"
                       : "border-[#2563eb]/30 text-[#94a3b8] hover:border-[#2563eb]/55 hover:text-[#93c5fd]"
@@ -774,7 +774,7 @@ export default function Home() {
               </button>
             ) : needsApproval ? (
               <button
-                className="btn-crown rounded-xl w-full py-4 px-4 md:py-5 md:px-8 text-base md:text-xl animate-pulse"
+                className="btn-crown rounded-xl w-full py-4 px-4 md:py-5 md:px-8 text-base md:text-xl"
                 disabled={isApproving}
                 onClick={handleApprove}
               >
@@ -783,9 +783,7 @@ export default function Home() {
             ) : (
               <button
                 ref={buyBtnRef}
-                className={`btn-crown rounded-xl w-full py-4 px-4 md:py-5 md:px-8 text-base md:text-xl ${
-                  !isBuying && isRoundActive ? "hover:scale-[1.03] active:scale-95" : ""
-                }`}
+                className="btn-crown rounded-xl w-full py-4 px-4 md:py-5 md:px-8 text-base md:text-xl"
                 disabled={isBuying || !isRoundActive}
                 onClick={handleBuy}
               >
@@ -895,7 +893,7 @@ export default function Home() {
 
               {/* CLAIM ALL button */}
               <button
-                className="btn-crown rounded-xl w-full py-3 md:py-4 text-base md:text-xl hover:scale-[1.03] active:scale-95 mb-4 animate-pulse"
+                className="btn-crown rounded-xl w-full py-3 md:py-4 text-base md:text-xl mb-4"
                 disabled={isClaimingAll || wrongNetwork}
                 onClick={handleClaimAll}
               >
