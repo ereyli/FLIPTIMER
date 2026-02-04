@@ -518,7 +518,6 @@ export default function Home() {
         </div>
       )}
 
-
       {/* ═══════════════════════════════════════
           HERO — COUNTDOWN TIMER
          ═══════════════════════════════════════ */}
@@ -700,6 +699,7 @@ export default function Home() {
             </div>
           </div>
         )}
+      </div>
 
       {/* ═══════════════════════════════════════
           YOUR STATS — CURRENT ROUND
