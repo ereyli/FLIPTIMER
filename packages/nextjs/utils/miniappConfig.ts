@@ -52,12 +52,18 @@ export const getMiniappMetadata = (base: Metadata): Metadata => {
 
 export const getMiniappManifest = () => {
   const associationRaw = process.env.FARCASTER_ACCOUNT_ASSOCIATION;
-  const iconUrl = process.env.NEXT_PUBLIC_MINIAPP_ICON_URL;
+  const iconUrl = process.env.NEXT_PUBLIC_MINIAPP_ICON_URL || `${baseUrl}/thumbnail.png`;
+  const heroImageUrl = process.env.NEXT_PUBLIC_MINIAPP_HERO_IMAGE_URL || `${baseUrl}/og-image.png`;
+  const ogImageUrl = process.env.NEXT_PUBLIC_MINIAPP_OG_IMAGE_URL || `${baseUrl}/og-image.png`;
+  const screenshotUrls = process.env.NEXT_PUBLIC_MINIAPP_SCREENSHOT_URLS
+    ? process.env.NEXT_PUBLIC_MINIAPP_SCREENSHOT_URLS.split(",").map(url => url.trim())
+    : [`${baseUrl}/og-image.png`];
 
-  if (!associationRaw || !iconUrl) {
+  if (!associationRaw) {
     return {
-      error: "Missing FARCASTER_ACCOUNT_ASSOCIATION or NEXT_PUBLIC_MINIAPP_ICON_URL",
-      required: ["FARCASTER_ACCOUNT_ASSOCIATION", "NEXT_PUBLIC_MINIAPP_ICON_URL"],
+      error: "Missing FARCASTER_ACCOUNT_ASSOCIATION",
+      required: ["FARCASTER_ACCOUNT_ASSOCIATION"],
+      note: "Generate account association at https://www.base.dev/preview?tab=account",
     };
   }
 
@@ -76,13 +82,27 @@ export const getMiniappManifest = () => {
     miniapp: {
       version: "1",
       name: miniappName,
-      iconUrl,
       homeUrl: miniappHomeUrl,
-      ...(miniappSplashImageUrl ? { splashImageUrl: miniappSplashImageUrl } : {}),
-      ...(miniappSplashBackground ? { splashBackgroundColor: miniappSplashBackground } : {}),
+      iconUrl,
+      splashImageUrl: miniappSplashImageUrl || iconUrl,
+      splashBackgroundColor: miniappSplashBackground,
+      subtitle: process.env.NEXT_PUBLIC_MINIAPP_SUBTITLE || "Last Buyer Wins",
+      description:
+        process.env.NEXT_PUBLIC_MINIAPP_DESCRIPTION ||
+        "King-of-the-hill game on Base. Buy keys, reset the timer, win the pot!",
+      tagline: process.env.NEXT_PUBLIC_MINIAPP_TAGLINE || "Last Buyer Wins The Pot",
+      heroImageUrl,
+      screenshotUrls: screenshotUrls.slice(0, 3), // Max 3 screenshots
       primaryCategory: "games",
-      tags: ["fomo3d", "base", "game"],
+      tags: ["fomo3d", "base", "game", "flip", "timer"],
       requiredChains: ["eip155:8453"],
+      ogTitle: process.env.NEXT_PUBLIC_MINIAPP_OG_TITLE || miniappName,
+      ogDescription: process.env.NEXT_PUBLIC_MINIAPP_OG_DESCRIPTION || "FlipTimer - Last buyer wins the pot on Base",
+      ogImageUrl,
+      ...(process.env.NEXT_PUBLIC_MINIAPP_WEBHOOK_URL
+        ? { webhookUrl: process.env.NEXT_PUBLIC_MINIAPP_WEBHOOK_URL }
+        : {}),
+      ...(process.env.NEXT_PUBLIC_MINIAPP_NOINDEX === "true" ? { noindex: true } : {}),
     },
   };
 };
