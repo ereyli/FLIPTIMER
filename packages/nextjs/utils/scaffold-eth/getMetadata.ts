@@ -10,7 +10,7 @@ const titleTemplate = "%s | FlipTimer";
 export const getMetadata = ({
   title,
   description,
-  imageRelativePath = "/og-image.png",
+  imageRelativePath = "/flip.png",
 }: {
   title: string;
   description: string;

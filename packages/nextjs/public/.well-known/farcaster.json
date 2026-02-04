@@ -8,22 +8,22 @@
     "version": "1",
     "name": "FlipTimer",
     "homeUrl": "https://fliptimer-nextjs-4oqr.vercel.app",
-    "iconUrl": "https://fliptimer-nextjs-4oqr.vercel.app/thumbnail.png",
-    "splashImageUrl": "https://fliptimer-nextjs-4oqr.vercel.app/thumbnail.png",
+    "iconUrl": "https://fliptimer-nextjs-4oqr.vercel.app/flip.png",
+    "splashImageUrl": "https://fliptimer-nextjs-4oqr.vercel.app/flip.png",
     "splashBackgroundColor": "#0f0d1a",
     "subtitle": "Last Buyer Wins",
     "description": "King-of-the-hill game on Base. Buy keys, reset the timer, win the pot!",
     "tagline": "Last Buyer Wins The Pot",
-    "heroImageUrl": "https://fliptimer-nextjs-4oqr.vercel.app/og-image.png",
+    "heroImageUrl": "https://fliptimer-nextjs-4oqr.vercel.app/flip.png",
     "screenshotUrls": [
-      "https://fliptimer-nextjs-4oqr.vercel.app/og-image.png"
+      "https://fliptimer-nextjs-4oqr.vercel.app/flip.png"
     ],
     "primaryCategory": "games",
     "tags": ["fomo3d", "base", "game", "flip", "timer"],
     "requiredChains": ["eip155:8453"],
     "ogTitle": "FlipTimer",
     "ogDescription": "FlipTimer - Last buyer wins the pot on Base",
-    "ogImageUrl": "https://fliptimer-nextjs-4oqr.vercel.app/og-image.png",
+    "ogImageUrl": "https://fliptimer-nextjs-4oqr.vercel.app/flip.png",
     "noindex": true
   }
 }

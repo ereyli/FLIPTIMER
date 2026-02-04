@@ -9,7 +9,7 @@ const baseUrl =
 
 const miniappName = process.env.NEXT_PUBLIC_MINIAPP_NAME || "FlipTimer";
 const miniappHomeUrl = process.env.NEXT_PUBLIC_MINIAPP_HOME_URL || baseUrl;
-const miniappEmbedImageUrl = process.env.NEXT_PUBLIC_MINIAPP_EMBED_IMAGE_URL || `${baseUrl}/thumbnail.png`;
+const miniappEmbedImageUrl = process.env.NEXT_PUBLIC_MINIAPP_EMBED_IMAGE_URL || `${baseUrl}/flip.png`;
 const miniappSplashImageUrl = process.env.NEXT_PUBLIC_MINIAPP_SPLASH_IMAGE_URL || undefined;
 const miniappSplashBackground = process.env.NEXT_PUBLIC_MINIAPP_SPLASH_BG || "#0f0d1a";
 
@@ -57,12 +57,12 @@ export const getMiniappMetadata = (base: Metadata): Metadata => {
 
 export const getMiniappManifest = () => {
   const associationRaw = process.env.FARCASTER_ACCOUNT_ASSOCIATION;
-  const iconUrl = process.env.NEXT_PUBLIC_MINIAPP_ICON_URL || `${baseUrl}/thumbnail.png`;
-  const heroImageUrl = process.env.NEXT_PUBLIC_MINIAPP_HERO_IMAGE_URL || `${baseUrl}/og-image.png`;
-  const ogImageUrl = process.env.NEXT_PUBLIC_MINIAPP_OG_IMAGE_URL || `${baseUrl}/og-image.png`;
+  const iconUrl = process.env.NEXT_PUBLIC_MINIAPP_ICON_URL || `${baseUrl}/flip.png`;
+  const heroImageUrl = process.env.NEXT_PUBLIC_MINIAPP_HERO_IMAGE_URL || `${baseUrl}/flip.png`;
+  const ogImageUrl = process.env.NEXT_PUBLIC_MINIAPP_OG_IMAGE_URL || `${baseUrl}/flip.png`;
   const screenshotUrls = process.env.NEXT_PUBLIC_MINIAPP_SCREENSHOT_URLS
     ? process.env.NEXT_PUBLIC_MINIAPP_SCREENSHOT_URLS.split(",").map(url => url.trim())
-    : [`${baseUrl}/og-image.png`];
+    : [`${baseUrl}/flip.png`];
 
   if (!associationRaw) {
     return {
