@@ -22,7 +22,7 @@ export const Header = () => {
         justifyContent: "space-between",
         padding: "8px 16px",
         background: "rgba(26, 26, 30, 0.95)",
-        borderBottom: "1px solid rgba(249, 115, 22, 0.4)",
+        borderBottom: "1px solid rgba(59, 130, 246, 0.4)",
         backdropFilter: "blur(12px)",
         gap: "8px",
         flexWrap: "nowrap",
@@ -31,13 +31,13 @@ export const Header = () => {
       <Link href="/" passHref className="shrink-0 group" style={{ textDecoration: "none" }}>
         <div className="flex flex-col">
           <span
-            className="font-extrabold leading-tight text-[#f97316] tracking-wider font-mono"
+            className="font-extrabold leading-tight text-[#3b82f6] tracking-wider font-mono"
             style={{ fontSize: "clamp(12px, 3.5vw, 18px)" }}
           >
             ◆ FlipTimer
           </span>
           <span
-            className="text-[#f97316]/70 font-mono uppercase hidden sm:block"
+            className="text-[#3b82f6]/70 font-mono uppercase hidden sm:block"
             style={{ fontSize: "10px", letterSpacing: "0.3em" }}
           >
             last_buyer_wins_the_pot
