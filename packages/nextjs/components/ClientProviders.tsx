@@ -9,10 +9,10 @@ const ScaffoldEthAppWithProviders = dynamic(
     ssr: false,
     loading: () => (
       <div className="flex flex-col min-h-screen items-center justify-center" style={{ background: "#141414" }}>
-        <div className="text-4xl animate-pulse" style={{ filter: "hue-rotate(-10deg) saturate(2)" }}>
+        <div className="text-4xl" style={{ filter: "hue-rotate(-10deg) saturate(2)" }}>
           🦞
         </div>
-        <div className="text-sm mt-4 font-mono tracking-[0.3em] uppercase animate-pulse" style={{ color: "#38bdf8" }}>
+        <div className="text-sm mt-4 font-mono tracking-[0.3em] uppercase" style={{ color: "#38bdf8" }}>
           INITIALIZING...
         </div>
         <div className="mt-2 text-xs font-mono" style={{ color: "rgba(255, 68, 68, 0.45)" }}>
