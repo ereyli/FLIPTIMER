@@ -15,7 +15,10 @@ const FLIPTIMER_ADDRESS = deployedContracts[8453].FlipTimer.address;
 const TARGET_CHAIN_ID = 8453;
 const ZERO_ADDR = "0x0000000000000000000000000000000000000000";
 const POLL_MS = 3000;
-const FLIP_BUY_URL = process.env.NEXT_PUBLIC_FLIP_BUY_URL || "";
+const FLIP_BUY_URL =
+  process.env.NEXT_PUBLIC_FLIP_BUY_URL ||
+  "https://app.uniswap.org/swap?chain=base&inputCurrency=NATIVE&outputCurrency=0xb79346381a98bdb140f869c4b4a6dc678cb48b07";
+const FLIP_TOKEN_ADDRESS = "0xb79346381a98bdb140f869c4b4a6dc678cb48b07";
 
 /* ═══════════════════════════════════════════════════════
    ERROR DECODER — friendly messages for contract errors
@@ -523,6 +526,37 @@ export default function Home() {
       )}
 
       {/* ═══════════════════════════════════════
+          SWAP $FLIP — Uniswap v4
+         ═══════════════════════════════════════ */}
+      <div className="w-full card-glass rounded-2xl p-4 md:p-6 mt-4 mb-2">
+        <div className="text-[9px] md:text-[10px] tracking-[0.15em] md:tracking-[0.3em] uppercase text-[#93c5fd]/65 mb-3 md:mb-4">
+          ◆ swap $FLIP — uniswap v4
+        </div>
+
+        <div className="space-y-3">
+          <div className="text-center">
+            <p className="text-xs md:text-sm text-[#94a3b8] mb-3">
+              Need $FLIP tokens to play? Swap ETH for $FLIP on Uniswap v4
+            </p>
+            <a
+              href={FLIP_BUY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-crown rounded-xl w-full py-3 md:py-4 text-sm md:text-base hover:scale-[1.03] active:scale-95 inline-block text-center"
+              onClick={e => e.stopPropagation()}
+            >
+              🔄 SWAP ETH → $FLIP ON UNISWAP V4
+            </a>
+          </div>
+
+          <div className="flex items-center justify-center gap-2 text-[10px] text-[#94a3b8]">
+            <span>Token:</span>
+            <Address address={FLIP_TOKEN_ADDRESS as `0x${string}`} />
+          </div>
+        </div>
+      </div>
+
+      {/* ═══════════════════════════════════════
           HOW TO PLAY — smooth brain edition
          ═══════════════════════════════════════ */}
       <div className="w-full card-glass rounded-2xl p-3 md:p-8 text-center mt-4 mb-2">
@@ -769,19 +803,6 @@ export default function Home() {
               <div className="text-xs text-[#3b82f6]/70 text-center tracking-wider font-semibold">
                 ⚡ one-time approval required
               </div>
-            )}
-
-            {/* BUY $FLIP link */}
-            {FLIP_BUY_URL && (
-              <a
-                href={FLIP_BUY_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary rounded-xl py-2.5 px-6 text-xs text-center block"
-                onClick={e => e.stopPropagation()}
-              >
-                {">> BUY $FLIP <<"}
-              </a>
             )}
           </div>
         </div>
