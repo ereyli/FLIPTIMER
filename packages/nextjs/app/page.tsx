@@ -493,17 +493,10 @@ export default function Home() {
 
           <div className="border-t border-[#3b82f6]/30 mb-4" />
 
-          <div className="text-xs md:text-sm text-[#93c5fd]/80 leading-relaxed space-y-3">
+          <div className="text-xs md:text-sm text-[#93c5fd]/80 leading-relaxed">
             <p>
-              Smart contracts are <span className="text-[#3b82f6] font-bold uppercase">unaudited</span>. This is an
-              experiment, not a product. Expect bugs.
+              <span className="text-[#3b82f6] font-bold uppercase">Unaudited</span> contracts. Use at your own risk.
             </p>
-            <p>
-              By connecting your wallet, you accept{" "}
-              <span className="text-[#3b82f6] font-bold">full responsibility</span> for your actions and any losses. You
-              will probably lose your tokens.
-            </p>
-            <p className="text-[#94a3b8]">Not financial advice. DYOR. Use at your own risk.</p>
           </div>
 
           <div className="border-t border-[#3b82f6]/30 mt-4 mb-4" />
@@ -525,79 +518,6 @@ export default function Home() {
         </div>
       )}
 
-      {/* ═══════════════════════════════════════
-          SWAP $FLIP — Uniswap v4
-         ═══════════════════════════════════════ */}
-      <div className="w-full card-glass rounded-2xl p-4 md:p-6 mt-4 mb-2">
-        <div className="text-[9px] md:text-[10px] tracking-[0.15em] md:tracking-[0.3em] uppercase text-[#93c5fd]/65 mb-3 md:mb-4">
-          ◆ swap $FLIP — uniswap v4
-        </div>
-
-        <div className="space-y-3">
-          <div className="text-center">
-            <p className="text-xs md:text-sm text-[#94a3b8] mb-3">
-              Need $FLIP tokens to play? Swap ETH for $FLIP on Uniswap v4
-            </p>
-            <a
-              href={FLIP_BUY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-crown rounded-xl w-full py-3 md:py-4 text-sm md:text-base inline-block text-center"
-              onClick={e => e.stopPropagation()}
-            >
-              🔄 SWAP ETH → $FLIP ON UNISWAP V4
-            </a>
-          </div>
-
-          <div className="flex items-center justify-center gap-2 text-[10px] text-[#94a3b8]">
-            <span>Token:</span>
-            <Address address={FLIP_TOKEN_ADDRESS as `0x${string}`} />
-          </div>
-        </div>
-      </div>
-
-      {/* ═══════════════════════════════════════
-          HOW TO PLAY — smooth brain edition
-         ═══════════════════════════════════════ */}
-      <div className="w-full card-glass rounded-2xl p-3 md:p-8 text-center mt-4 mb-2">
-        <h1
-          className="text-lg md:text-4xl font-black tracking-tight mb-1"
-          style={{ color: "#3b82f6", textShadow: "0 0 20px rgba(249,115,22,0.6), 0 0 40px rgba(249,115,22,0.3)" }}
-        >
-          👑 LAST BUYER WINS EVERYTHING.
-        </h1>
-        <p className="text-[#94a3b8] text-[10px] md:text-xs tracking-[0.1em] md:tracking-[0.2em] uppercase mb-4 md:mb-6">
-          a $FLIP king-of-the-hill game on Base
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4 text-left">
-          <div className="card-glass rounded-xl p-3 md:p-4">
-            <div className="text-xl md:text-2xl mb-1 md:mb-2">🔑</div>
-            <div className="text-xs md:text-sm font-bold text-[#e0f2fe] mb-1">1. BUY A KEY</div>
-            <div className="text-[11px] md:text-xs text-[#94a3b8] leading-relaxed">
-              Adds time to the clock. Makes YOU the King.
-              <span className="text-[#93c5fd]"> Bonus:</span> Key holders earn 22.5% of every purchase + split 25% of
-              the pot at round end!
-            </div>
-          </div>
-          <div className="card-glass rounded-xl p-3 md:p-4">
-            <div className="text-xl md:text-2xl mb-1 md:mb-2">👑</div>
-            <div className="text-xs md:text-sm font-bold text-[#e0f2fe] mb-1">2. HOLD THE THRONE</div>
-            <div className="text-[11px] md:text-xs text-[#94a3b8] leading-relaxed">
-              If the timer hits <span className="text-[#3b82f6] font-bold">00:00:00</span> while you are King…
-              <span className="text-[#3b82f6] font-bold"> YOU WIN THE POT.</span> 💰
-            </div>
-          </div>
-          <div className="card-glass rounded-xl p-3 md:p-4">
-            <div className="text-xl md:text-2xl mb-1 md:mb-2">🔥</div>
-            <div className="text-xs md:text-sm font-bold text-[#e0f2fe] mb-1">3. BURN IT ALL</div>
-            <div className="text-[11px] md:text-xs text-[#94a3b8] leading-relaxed">
-              Every buy burns tokens. Number go up.
-              <span className="text-[#93c5fd]"> 10% burned on every purchase + 20% of the pot at round end.</span>
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* ═══════════════════════════════════════
           HERO — COUNTDOWN TIMER
@@ -632,7 +552,7 @@ export default function Home() {
             ? isAntiSnipe
               ? "🚨 UNDER 2 MIN — EVERY BUY EXTENDS THE TIMER 🚨"
               : "last buyer when timer hits zero wins the pot"
-            : "round ended — execute endRound() to distribute"}
+            : "round ended"}
         </div>
 
         {isAntiSnipe && (
@@ -644,14 +564,10 @@ export default function Home() {
 
         {/* END ROUND — right under timer when round is over */}
         {!isRoundActive && (
-          <div className="mt-6">
-            <div className="text-xs md:text-sm text-[#3b82f6] font-bold mb-2 text-glow-subtle">
-              🏁 ROUND OVER — DISTRIBUTE
-            </div>
-            <div className="text-[10px] md:text-xs text-[#94a3b8] mb-3">anyone can trigger distribution now</div>
+          <div className="mt-4">
             {wrongNetwork ? (
               <button
-                className="btn-crown rounded-xl py-3 px-6 md:py-4 md:px-10 text-sm md:text-lg"
+                className="btn-crown rounded-xl py-3 px-6 md:py-4 md:px-10 text-sm md:text-lg w-full"
                 disabled={isSwitching}
                 onClick={handleSwitch}
               >
@@ -659,7 +575,7 @@ export default function Home() {
               </button>
             ) : (
               <button
-                className="btn-crown rounded-xl py-3 px-6 md:py-4 md:px-10 text-sm md:text-lg"
+                className="btn-crown rounded-xl py-3 px-6 md:py-4 md:px-10 text-sm md:text-lg w-full"
                 disabled={isEnding}
                 onClick={handleEndRound}
               >
@@ -668,143 +584,122 @@ export default function Home() {
             )}
           </div>
         )}
-      </div>
 
-      {/* ═══════════════════════════════════════
-          CURRENT LEADER
-         ═══════════════════════════════════════ */}
-      <div className="w-full card-glass rounded-xl p-3 md:p-4 text-center mt-3">
-        <TermLabel>👑 current king</TermLabel>
-        <div className="mt-2">
-          {roundInfo && roundInfo[3] && roundInfo[3] !== ZERO_ADDR ? (
-            <div className="flex justify-center">
-              <Address address={roundInfo[3]} />
-            </div>
-          ) : (
-            <span className="text-[#94a3b8] text-sm">NO BUYERS YET — BE THE FIRST</span>
-          )}
-        </div>
-      </div>
+        {/* ═══════════════════════════════════════
+            BUY KEYS — "SNATCH THE CROWN" (moved here for mobile)
+           ═══════════════════════════════════════ */}
+        {isRoundActive && (
+          <div
+            className="w-full card-glass rounded-2xl p-3 md:p-6 mt-4"
+            style={{
+              borderColor: "rgba(249, 115, 22, 0.4)",
+              boxShadow: "0 0 20px rgba(249, 115, 22, 0.1), inset 0 0 30px rgba(249, 115, 22, 0.03)",
+            }}
+          >
+            <div className="flex flex-col md:flex-row gap-6">
+              <div className="flex-1">
+                <div className="text-xs text-[#93c5fd]/70 mb-2">keys (1-1000)</div>
+                <input
+                  type="number"
+                  min="1"
+                  max="1000"
+                  value={numKeys}
+                  onChange={e => setNumKeys(e.target.value)}
+                  className="w-full bg-transparent border border-[#2563eb]/50 rounded-xl px-3 py-2 md:px-4 md:py-3 text-center text-2xl md:text-3xl font-bold text-[#e0f2fe] font-mono
+                             focus:outline-none focus:border-[#2563eb]/80 focus:shadow-[0_0_15px_rgba(124,58,237,0.3)]"
+                  placeholder="1"
+                />
 
-      <TermDivider />
+                {/* Quick select */}
+                <div className="flex gap-1 md:gap-1.5 mt-2 md:mt-3">
+                  {[1, 5, 10, 25, 50, 100].map(n => (
+                    <button
+                      key={n}
+                      className={`flex-1 py-1 md:py-1.5 text-[10px] md:text-xs font-mono font-bold tracking-wider border rounded-lg cursor-pointer ${
+                        numKeys === String(n)
+                          ? "border-[#2563eb]/70 bg-[#2563eb]/25 text-[#93c5fd]"
+                          : "border-[#2563eb]/30 text-[#94a3b8] hover:border-[#2563eb]/55 hover:text-[#93c5fd]"
+                      }`}
+                      onClick={() => setNumKeys(String(n))}
+                    >
+                      {n}
+                    </button>
+                  ))}
+                </div>
 
-      {/* ═══════════════════════════════════════
-          BUY KEYS — "SNATCH THE CROWN"
-         ═══════════════════════════════════════ */}
-      <div
-        className="w-full card-glass rounded-2xl p-3 md:p-6"
-        style={{
-          borderColor: "rgba(249, 115, 22, 0.4)",
-          boxShadow: "0 0 20px rgba(249, 115, 22, 0.1), inset 0 0 30px rgba(249, 115, 22, 0.03)",
-        }}
-      >
-        <div className="text-[10px] md:text-xs tracking-[0.2em] md:tracking-[0.3em] uppercase text-[#3b82f6] mb-3 md:mb-4 font-bold text-glow-subtle">
-          ◆ snatch the crown ◆
-        </div>
+                {cost && (
+                  <div className="mt-4 space-y-2">
+                    <div className="text-center py-2 px-2 md:py-3 md:px-4 rounded-xl bg-[#2563eb]/10 border border-[#2563eb]/30">
+                      <div className="text-[10px] tracking-[0.3em] uppercase text-[#93c5fd]/65 mb-1">cost</div>
+                      <div
+                        className="text-xl md:text-5xl font-black font-mono tracking-tight text-glow break-all"
+                        style={{ color: "#e0f2fe" }}
+                      >
+                        {fmtCP(cost)} FLIP
+                      </div>
+                      <div className="text-base md:text-2xl font-bold font-mono mt-1" style={{ color: "#94a3b8" }}>
+                        → {toUsd(cost)}
+                      </div>
+                    </div>
+                    <div className="flex justify-center">
+                      <span className="text-[#3b82f6] text-[10px] font-mono">
+                        🔥 {fmtC((cost * 10n) / 100n)} burned
+                      </span>
+                    </div>
+                  </div>
+                )}
 
-        <div className="flex flex-col md:flex-row gap-6">
-          <div className="flex-1">
-            <div className="text-xs text-[#93c5fd]/70 mb-2">how many keys? (1-1000)</div>
-            <input
-              type="number"
-              min="1"
-              max="1000"
-              value={numKeys}
-              onChange={e => setNumKeys(e.target.value)}
-              className="w-full bg-transparent border border-[#2563eb]/50 rounded-xl px-3 py-2 md:px-4 md:py-3 text-center text-2xl md:text-3xl font-bold text-[#e0f2fe] font-mono
-                         focus:outline-none focus:border-[#2563eb]/80 focus:shadow-[0_0_15px_rgba(124,58,237,0.3)]"
-              placeholder="1"
-            />
+                {address && clawdBalance !== undefined && (
+                  <div className="text-[10px] text-[#94a3b8] mt-3">
+                    balance: {fmtC(clawdBalance)} FLIP
+                  </div>
+                )}
+              </div>
 
-            {/* Quick select */}
-            <div className="flex gap-1 md:gap-1.5 mt-2 md:mt-3">
-              {[1, 5, 10, 25, 50, 100].map(n => (
-                <button
-                  key={n}
-                  className={`flex-1 py-1 md:py-1.5 text-[10px] md:text-xs font-mono font-bold tracking-wider border rounded-lg cursor-pointer ${
-                    numKeys === String(n)
-                      ? "border-[#2563eb]/70 bg-[#2563eb]/25 text-[#93c5fd]"
-                      : "border-[#2563eb]/30 text-[#94a3b8] hover:border-[#2563eb]/55 hover:text-[#93c5fd]"
-                  }`}
-                  onClick={() => setNumKeys(String(n))}
-                >
-                  {n}
-                </button>
-              ))}
-            </div>
-
-            {cost && (
-              <div className="mt-4 space-y-2">
-                <div className="text-center py-2 px-2 md:py-3 md:px-4 rounded-xl bg-[#2563eb]/10 border border-[#2563eb]/30">
-                  <div className="text-[10px] tracking-[0.3em] uppercase text-[#93c5fd]/65 mb-1">cost</div>
-                  <div
-                    className="text-xl md:text-5xl font-black font-mono tracking-tight text-glow break-all"
-                    style={{ color: "#e0f2fe" }}
+              {/* Action Button */}
+              <div className="flex flex-col justify-center md:w-64 gap-3">
+                {wrongNetwork ? (
+                  <button
+                    className="btn-action rounded-xl w-full py-4 px-4 md:py-5 md:px-8 text-sm md:text-base"
+                    disabled={isSwitching}
+                    onClick={handleSwitch}
                   >
-                    {fmtCP(cost)} FLIP
+                    {isSwitching ? "SWITCHING..." : "SWITCH TO BASE"}
+                  </button>
+                ) : needsApproval ? (
+                  <button
+                    className="btn-crown rounded-xl w-full py-4 px-4 md:py-5 md:px-8 text-base md:text-xl"
+                    disabled={isApproving}
+                    onClick={handleApprove}
+                  >
+                    {isApproving ? "APPROVING..." : "🔓 APPROVE FLIP"}
+                  </button>
+                ) : (
+                  <button
+                    ref={buyBtnRef}
+                    className="btn-crown rounded-xl w-full py-4 px-4 md:py-5 md:px-8 text-base md:text-xl"
+                    disabled={isBuying || !isRoundActive}
+                    onClick={handleBuy}
+                  >
+                    {isBuying
+                      ? "EXECUTING..."
+                      : !isRoundActive
+                        ? "ROUND ENDED"
+                        : address && roundInfo && roundInfo[3] && roundInfo[3].toLowerCase() === address.toLowerCase()
+                          ? "BUY MORE KEYS 🔑"
+                          : "SNATCH THE 👑 CROWN"}
+                  </button>
+                )}
+
+                {needsApproval && (
+                  <div className="text-[10px] text-[#3b82f6]/70 text-center">
+                    ⚡ approval required
                   </div>
-                  <div className="text-base md:text-2xl font-bold font-mono mt-1" style={{ color: "#94a3b8" }}>
-                    → {toUsd(cost)}
-                  </div>
-                </div>
-                <div className="flex justify-center">
-                  <span className="text-[#3b82f6] text-xs font-mono">
-                    🔥 {fmtC((cost * 10n) / 100n)} FLIP burned on buy
-                  </span>
-                </div>
+                )}
               </div>
-            )}
-
-            {address && clawdBalance !== undefined && (
-              <div className="text-[10px] text-[#94a3b8] mt-3 tracking-wider">
-                your balance: {fmtC(clawdBalance)} FLIP ({toUsd(clawdBalance)})
-              </div>
-            )}
+            </div>
           </div>
-
-          {/* Action Button */}
-          <div className="flex flex-col justify-center md:w-64 gap-3">
-            {wrongNetwork ? (
-              <button
-                className="btn-action rounded-xl w-full py-4 px-4 md:py-5 md:px-8 text-sm md:text-base"
-                disabled={isSwitching}
-                onClick={handleSwitch}
-              >
-                {isSwitching ? "SWITCHING..." : "SWITCH TO BASE"}
-              </button>
-            ) : needsApproval ? (
-              <button
-                className="btn-crown rounded-xl w-full py-4 px-4 md:py-5 md:px-8 text-base md:text-xl"
-                disabled={isApproving}
-                onClick={handleApprove}
-              >
-                {isApproving ? "APPROVING..." : "🔓 APPROVE FLIP"}
-              </button>
-            ) : (
-              <button
-                ref={buyBtnRef}
-                className="btn-crown rounded-xl w-full py-4 px-4 md:py-5 md:px-8 text-base md:text-xl"
-                disabled={isBuying || !isRoundActive}
-                onClick={handleBuy}
-              >
-                {isBuying
-                  ? "EXECUTING..."
-                  : !isRoundActive
-                    ? "ROUND ENDED"
-                    : address && roundInfo && roundInfo[3] && roundInfo[3].toLowerCase() === address.toLowerCase()
-                      ? "BUY MORE KEYS 🔑"
-                      : "SNATCH THE 👑 CROWN"}
-              </button>
-            )}
-
-            {needsApproval && (
-              <div className="text-xs text-[#3b82f6]/70 text-center tracking-wider font-semibold">
-                ⚡ one-time approval required
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
+        )}
 
       {/* ═══════════════════════════════════════
           YOUR STATS — CURRENT ROUND
@@ -813,8 +708,8 @@ export default function Home() {
         <>
           <TermDivider />
           <div className="w-full card-glass rounded-2xl p-3 md:p-5">
-            <div className="text-[9px] md:text-[10px] tracking-[0.15em] md:tracking-[0.3em] uppercase text-[#93c5fd]/65 mb-3 md:mb-4">
-              ◆ your stats — round {currentRound}
+            <div className="text-[9px] md:text-[10px] tracking-[0.15em] md:tracking-[0.3em] uppercase text-[#93c5fd]/65 mb-2 md:mb-3">
+              ◆ your stats
             </div>
 
             <div className="space-y-2 text-xs md:text-sm">
@@ -831,21 +726,6 @@ export default function Home() {
                   </span>
                 </div>
               </div>
-              {playerInfo && playerInfo[0] > 0n && playerInfo[1] === 0n && isRoundActive && (
-                <div className="text-[10px] text-[#94a3b8]/70 ml-1 -mt-1 mb-1">
-                  💡 22.5% of every buy flows to key holders — claim anytime!
-                </div>
-              )}
-              {playerInfo && playerInfo[0] > 0n && isRoundActive && roundInfo && roundInfo[4] > 0n && (
-                <div className="flex justify-between">
-                  <TermLabel>est. payout at round end</TermLabel>
-                  <div>
-                    <span className="text-[#93c5fd] font-mono text-sm">
-                      ~{fmtC((((roundInfo[1] * 2500n) / 10000n) * playerInfo[0]) / roundInfo[4])} FLIP
-                    </span>
-                  </div>
-                </div>
-              )}
               <div className="flex justify-between">
                 <TermLabel>claimed</TermLabel>
                 <span className="text-[#93c5fd]">{playerInfo ? fmtCDiv(playerInfo[2]) : "0"} FLIP</span>
@@ -874,7 +754,7 @@ export default function Home() {
               }}
             >
               <div className="text-[10px] md:text-xs tracking-[0.2em] md:tracking-[0.3em] uppercase text-[#3b82f6] mb-3 md:mb-4 font-bold text-glow-subtle">
-                💰 UNCLAIMED DIVIDENDS — ALL ROUNDS
+                💰 UNCLAIMED DIVIDENDS
               </div>
 
               {/* Total unclaimed — big number */}
@@ -904,11 +784,6 @@ export default function Home() {
                     : `CLAIM ALL — ${fmtC(totalUnclaimed)} FLIP`}
               </button>
 
-              {roundsWithUnclaimed.length > 1 && (
-                <div className="text-[10px] text-[#94a3b8] text-center mb-3">
-                  {roundsWithUnclaimed.length} rounds with unclaimed dividends — claimed in one transaction ⚡
-                </div>
-              )}
 
               {/* Per-round breakdown */}
               <div className="space-y-2">
