@@ -228,8 +228,11 @@ export default function Home() {
   const { data: latestRoundsData } = useScaffoldReadContract({
     contractName: "FlipTimer",
     functionName: "getLatestRounds",
-    args: [BigInt(visibleRounds)],
-    query: { refetchInterval: undefined }, // Past rounds are immutable — no polling needed
+    args: [BigInt(visibleRounds > 0 ? visibleRounds : 10)],
+    query: {
+      refetchInterval: POLL_MS, // Enable polling to refresh when new rounds complete
+      enabled: visibleRounds > 0,
+    },
   });
 
   const { data: roundCount } = useScaffoldReadContract({
@@ -241,16 +244,19 @@ export default function Home() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const totalCompletedRounds = roundCount ? Number(roundCount) - 1 : 0;
 
-  const roundHistory = (latestRoundsData || []).map((r: any) => ({
-    round: Number(r.roundId),
-    winner: r.winner as string,
-    potSize: r.potSize as bigint,
-    winnerPayout: r.winnerPayout as bigint,
-    burned: r.burnAmount as bigint,
-    totalKeys: r.totalKeys as bigint,
-    dividendsPayout: r.dividendsPayout as bigint,
-    seedAmount: r.seedAmount as bigint,
-  }));
+  const roundHistory = useMemo(() => {
+    if (!latestRoundsData || !Array.isArray(latestRoundsData)) return [];
+    return latestRoundsData.map((r: any) => ({
+      round: Number(r.roundId || r[0] || 0),
+      winner: (r.winner || r[1] || ZERO_ADDR) as string,
+      potSize: (r.potSize || r[2] || 0n) as bigint,
+      winnerPayout: (r.winnerPayout || r[4] || 0n) as bigint,
+      burned: (r.burnAmount || r[5] || 0n) as bigint,
+      totalKeys: (r.totalKeys || r[3] || 0n) as bigint,
+      dividendsPayout: (r.dividendsPayout || r[6] || 0n) as bigint,
+      seedAmount: (r.seedAmount || r[7] || 0n) as bigint,
+    }));
+  }, [latestRoundsData]);
 
   // (prevPlayerInfo removed — replaced by allRoundsDividends multi-round query below)
 
