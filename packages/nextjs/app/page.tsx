@@ -15,10 +15,6 @@ const FLIPTIMER_ADDRESS = deployedContracts[8453].FlipTimer.address;
 const TARGET_CHAIN_ID = 8453;
 const ZERO_ADDR = "0x0000000000000000000000000000000000000000";
 const POLL_MS = 3000;
-const FLIP_BUY_URL =
-  process.env.NEXT_PUBLIC_FLIP_BUY_URL ||
-  "https://app.uniswap.org/swap?chain=base&inputCurrency=NATIVE&outputCurrency=0xb79346381a98bdb140f869c4b4a6dc678cb48b07";
-const FLIP_TOKEN_ADDRESS = "0xb79346381a98bdb140f869c4b4a6dc678cb48b07";
 
 /* ═══════════════════════════════════════════════════════
    ERROR DECODER — friendly messages for contract errors
@@ -649,9 +645,7 @@ export default function Home() {
                 )}
 
                 {address && clawdBalance !== undefined && (
-                  <div className="text-[10px] text-[#94a3b8] mt-3">
-                    balance: {fmtC(clawdBalance)} FLIP
-                  </div>
+                  <div className="text-[10px] text-[#94a3b8] mt-3">balance: {fmtC(clawdBalance)} FLIP</div>
                 )}
               </div>
 
@@ -690,11 +684,7 @@ export default function Home() {
                   </button>
                 )}
 
-                {needsApproval && (
-                  <div className="text-[10px] text-[#3b82f6]/70 text-center">
-                    ⚡ approval required
-                  </div>
-                )}
+                {needsApproval && <div className="text-[10px] text-[#3b82f6]/70 text-center">⚡ approval required</div>}
               </div>
             </div>
           </div>
@@ -783,7 +773,6 @@ export default function Home() {
                     ? "SWITCH TO BASE"
                     : `CLAIM ALL — ${fmtC(totalUnclaimed)} FLIP`}
               </button>
-
 
               {/* Per-round breakdown */}
               <div className="space-y-2">
